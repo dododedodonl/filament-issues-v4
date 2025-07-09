@@ -15,13 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $otherModels = OtherModel::factory()->count(3)->create();
-
         $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'secret',
         ]);
+
+        $otherModels = OtherModel::factory()->count(3)->create();
 
         $user->otherModels()->attach($otherModels->take(2)->modelKeys());
     }
